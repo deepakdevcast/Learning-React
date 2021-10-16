@@ -1,2 +1,10 @@
 import React from 'react';
-export const Welcome = ()=> <h1>Welcome Readers</h1>;
+export const Welcome = (props) => {
+
+    return (
+        <div>
+        <h1>Welcome {props.name}</h1>
+        {props.children}
+        </div>
+    );
+}
