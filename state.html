@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component State</title>
+</head>
+<body>
+    <h1>Component State</h1>
+    <p>state is nothing but a private object maintained by Components</p>
+    <p>state is managed within the component</p>
+    <p>Variables declared in the function body</p>
+    <p>state can be changed</p>
+    <br>
+    <p>useState Hook - <b>Function Components</b></p>
+    <p>this.state - <b>Class Components</b></p>
+
+    <h3>Step-by-Step</h3>
+    <p>1. Create a Class Component</p>
+    <p>2. add constuctor and create this.state object with the properties</p>
+    <p>3. make a user-defined function to change state using this.setState(to replace old state to new object)</p>
+    <p>
+    <h4>Example -</h4>
+    <pre>class Message extends Component {
+        constructor() {
+            super()
+            this.state = {
+                message: "Message to Readers"
+            }
+        }
+        changeMessage(){
+            this.setState({
+                message: "Thank you"
+            })
+        }
+        render() {
+            return (
+                &lt;div&gt;
+                    &lt;h1&gt;{this.state.message}&lt;/h1&gt;
+                    &lt;button onClick={()=>this.changeMessage()}&gt;Click to see&lt;/button&gt;
+                &lt;/div&gt;
+            );
+        }
+    }</pre></p>
+    <p><b>point: </b><br>
+    1. if you try to change state without using setState then UI won't update but you can see change in console<br> 
+    2. this.setState in <b>async</b> function. you can run something after this by using Callback function
+    <br><b>example:</b>
+    <pre>this.setState({
+        count: this.state.count+1
+    }, ()=>{
+        console.log("Callback: ", this.state.count)
+    })</pre><br>
+    3. when you have to update state based on the previous sate value, pass in a fuction as an argument
+    instead of the regular object(<b>Good way to code</b>)
+    <br>example:<br>
+    <pre>this.setState(preState => ({
+        count: preState.count + 1
+
+    }), () => {
+        console.log("Callback: ", this.state.count)
+    })</pre>
+    </p>
+</body>
+</html>
