@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+</head>
+<body>
+    <h1>Event Handling</h1>
+    <p>all the react event handler name follows camelcase example: onClick</p>
+    <p>it's except the object example: onClick={eventHandlerMethod}(notice function doesn't have brackets'()' )</p>
+    <h3>fuctional Components</h3>
+    <pre>
+        function A(){
+            function clickHandler(){
+                console.log("clicked")
+            }
+            return (
+                &lt;div&gt;
+                &lt;button onClick={clickHandler}&gt;&lt;/button&gt;
+                &lt;/div&gt;
+            )
+        }
+    </pre>
+    <h3>Class Components</h3>
+    <pre>
+        class ClassClick extends Component {
+            clickHandler(){
+                console.log("class button clicked")
+            } 
+            render() {
+                return (
+                    &lt;div&gt;
+                        &lt;button onClick={this.clickHandler}&gt;Class Click&lt;button&gt;
+                    &lt;div&gt;
+                )
+            }
+        }
+    </pre>
+    <br>
+    <p> <b>Important!!</b> to use event handler to change state you have to use Event binding</p>
+    <a href="./eventbinding.html"><button>Next Event Binding ></button></a>
+</body>
+</html>

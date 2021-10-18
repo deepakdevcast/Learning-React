@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Binding</title>
+</head>
+<body>
+    <h1>Event Binding</h1>
+    <p>It is used to change state using event handler</p>
+    <p>React have 4 ways to bind the this keyworg</p>
+    <p>1. using bind method <br> 2. call the handler using arrow function
+    <br>3. defined the bind method in class constructor <br> 4. create handler method using arrow fuction</p>
+    <h3>example: </h3>
+    <pre>
+        class ClassClick extends Component {
+            constructor(props) {
+                super(props)
+            
+                this.state = {
+                    greet: "Wellcome"
+                }
+                this.clickHandler = this.clickHandler.bind(this)
+            }
+            
+            clickHandler(){
+                this.setState(prevState =>({
+                    greet: "thank you"
+                }),()=>{console.log(`${this.state.greet}`)})
+                
+            } 
+            // 4th way
+            arrowClickHandler = ()=>{
+                this.setState(prevState =>({
+                    greet: "thank you"
+                }),()=>{console.log(`${this.state.greet}`)})
+            }
+            render() {
+                return (
+                    &lt;div&gt;
+                        {/* 4 ways to bind and 3,4 is the best ways */}
+                        
+                        {/* 1. by using bind method  not a good way */}
+                        {/* &lt;button onClick={this.clickHandler.bind(this)}&gt;Class Click&lt;/button&gt; */}
+                        
+                        {/* 2. using arrow function not that good */}
+                        {/* &lt;button onClick={()=>this.clickHandler()}&gt;Class Click&lt;/button&gt; */}
+        
+                        {/* 3. defined the bind in the constuctor of class */}
+                        {/* &lt;button onClick={this.clickHandler}>Class Click&lt;/button&gt; */}
+        
+                        {/* 4. create the handler function using arrow function */}
+                        &lt;button onClick = {this.arrowClickHandler}&gt;Class Click&lt;/button&gt;
+                        &lt;/div&gt;
+                )
+            }
+        }
+    </pre>
+</body>
+</html>
