@@ -5,6 +5,7 @@ import Message from './Components/Message';
 import Counter from './Components/Counter';
 import ClickHandler from './Components/ClickHandler';
 import ClassClick from './Components/ClassClick';
+import Parent from './Components/Parent';
 function App() {
   return (
     <div className="App">
@@ -30,6 +31,9 @@ function App() {
 
       {/* Class componenet Event handler */}
       <ClassClick/>
+
+      {/* child to parent - method as props */}
+      <Parent/>
     </div>
   );
 }
