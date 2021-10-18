@@ -6,6 +6,7 @@ import Counter from './Components/Counter';
 import ClickHandler from './Components/ClickHandler';
 import ClassClick from './Components/ClassClick';
 import Parent from './Components/Parent';
+import Condition from './Components/Condition';
 function App() {
   return (
     <div className="App">
@@ -34,6 +35,9 @@ function App() {
 
       {/* child to parent - method as props */}
       <Parent/>
+
+      {/* Conditional Rendering - Sign in ex */}
+      <Condition/>
     </div>
   );
 }
