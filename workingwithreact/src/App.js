@@ -3,6 +3,8 @@ import {Welcome} from './Components/Welcome';
 import Hello from './Components/Hello';
 import Message from './Components/Message';
 import Counter from './Components/Counter';
+import ClickHandler from './Components/ClickHandler';
+import ClassClick from './Components/ClassClick';
 function App() {
   return (
     <div className="App">
@@ -22,6 +24,12 @@ function App() {
       
       {/* Counter-class Component more with setState */}
       <Counter/>
+
+      {/* functional component Event handler */}
+      <ClickHandler/>
+
+      {/* Class componenet Event handler */}
+      <ClassClick/>
     </div>
   );
 }
