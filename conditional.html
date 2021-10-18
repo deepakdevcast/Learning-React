@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Rendering - React</title>
+</head>
+<body>
+    <h1>Conditional Rendering</h1>
+    <p>means rendering some html conditionally</p>
+    <p>In JS, 4 ways to do conditional rendering</p>
+    <p>1. if/else condition <br> 2. Element variables 
+    <br> 3. ternary operator(advantage: it can be used in the JSX/HTML) 
+    <br> 4. Sort circuit operator (this working only in special case if you want to something or nothing)</p> 
+    <h3>example: </h3>
+    <pre>
+        class Condition extends Component {
+            constructor(props) {
+                super(props)
+        
+                this.state = {
+                    isLogin: false
+                }
+                this.login = this.login.bind(this)
+            }
+        
+            login() {
+                this.setState(prevSate => ({
+                    isLogin: !prevSate.isLogin
+                }))
+        
+            }
+            // 2
+            // text(){
+            //     let message
+            //     if(this.state.isLogin){
+            //         message = "Logged In"
+            //     }else{
+            //         message = "Sign Up"
+            //     }
+            //     return message
+            // }
+            render() {
+        
+                // 1. using if/else
+                // if (this.state.isLogin) {
+                //     return (
+                //         &lt;div&gt;
+                //             &lt;h2&gt;logged In&lt;/h2&gt;
+                //             &lt;button onClick={this.login}&gt;Click me&lt;/button&gt;
+                //         &lt;/div&gt;
+                //     )
+                // }
+                // else {
+                //     return (
+                //         &lt;div&gt;
+                //             &lt;h2&gt;Sign up&lt;/h2&gt;
+                //             &lt;button onClick={this.login}&gt;Click me&lt;/button&gt;
+                //         &lt;/div&gt;
+                //     )
+                // }
+        
+                // 2 using variables
+                // return (
+                //     &lt;div&gt;
+                //         &lt;h2&gt;{this.text()}&lt;/h2&gt;
+                //         &lt;button onClick={this.login}&gt;Click me&lt;/button&gt;
+                //     </div>
+                // )
+                
+                // 3 using Ternary operator
+                // return this.state.isLogin ? (
+                //     &lt;div&gt;
+                //         &lt;p&gt;Logged In&lt;/p&gt;
+                //         &lt;button onClick={this.login}&gt;Click me&lt;/button&gt;
+                //     &lt;/div&gt;
+                //      ):(
+                //     &lt;div&gt;
+                //         &lt;p&gt;Sign Up&lt;/p&gt;
+                //         &lt;button onClick={this.login}&lt;Click me&lt;/button&gt;
+                //     &lt;/div&gt;
+                // )
+        
+                // 4 using Short circuit operator
+                return (this.state.isLogin && &lt;div&gt;Logged In&lt;/div&gt;) || (&lt;button onClick={this.login}&gt;Click me&lt;/button&gt;)
+            }
+        }
+    </pre>
+</body>
+</html>
