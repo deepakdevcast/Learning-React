@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child To Parent Component - method as props</title>
+</head>
+<body>
+    <h1>Child To Parent Component - method as props</h1>
+    <p>To change something in Parent Component using Child Component - this is done by passing a function as props of child Component</p>
+    <h3>Step-by-Step</h3>
+    <p>1. define a function in parent</p>
+    <p>2. pass this function to child as props</p>
+    <p>3. in child call the function using props</p>
+    <br>
+    <h3>example:</h3>
+    <pre>
+        <b>Parent Component</b>
+        class Parent extends Component {
+            constructor(props) {
+                super(props)
+            
+                this.state = {
+                    howis: "Parent",
+                    name: "Readers"
+                }
+                this.changing = this.changing.bind(this)
+            }
+            
+            changing(howis = "Parent"){
+                this.setState(prevState=>({
+                    howis: howis,
+                    name: "learners"
+                }))
+            }
+            render() {
+                return (
+                    &lt;div&gt;
+                        &lt;p&gt;{this.state.howis} - {this.state.name}&lt;/p&gt;
+                        
+                        &lt;Child handle={this.changing}/&gt;
+                    &lt;/div&gt;
+                )
+            }
+        }
+        <b>Child Component</b>
+        function Child(props) {
+            return (
+                
+                &lt;div&gt;
+                    &lt;button onClick={()=>props.handle("child")}&gt;click child change parent&lt;button&gt;
+                &lt;/div&gt;
+            )
+        }
+    </pre>
+</body>
+</html>
