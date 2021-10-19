@@ -8,6 +8,7 @@ import ClassClick from './Components/ClassClick';
 import Parent from './Components/Parent';
 import Condition from './Components/Condition';
 import CouseRender from './Components/CouseRender';
+import Styling from './Components/Styling';
 function App() {
   return (
     <div className="App">
@@ -42,6 +43,9 @@ function App() {
 
       {/* List Rendering */}
       <CouseRender/>
+
+      {/* Styling  */}
+      <Styling primary={true}/>
     </div>
   );
 }
