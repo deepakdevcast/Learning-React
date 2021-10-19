@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Lifecycle</title>
+</head>
+
+<body>
+    <h1>Component Lifecycle</h1>
+    <p>Mainly Component have 4 level in Lifcycle<br><br>
+        1. <b>Mounting</b> - When instance of Component created and inserted in DOM<br>
+        methods in mounting: constructor, static getDerivedStateFromProps, render and componentDidMount<br><br>
+        2. <b>Updating</b> - When Component re-rendering on either change its props or state<br>
+        methods in updating: static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotBeforeUpdate and
+        componentDidUpdate<br><br>
+        3. <b>Unmounting</b> - when Component removed from DOM
+        methods in unmounting: componentWillUnmount<br><br>
+        4. <b>Error Handling</b> - When their is error on rendering component,in the lifecycle method or in the
+        constructor of any child component
+        methods in error handling: static getDerivedStateFromError and componentDidCatch<br>
+    </p>
+    <h3>1. Mounting</h3>
+    <p>execute order : constructor -> getDerivedStateFromProps -> render() -> componentDidMount</p>
+    <p>constructor() :<br><br>
+        point- i. special function that will get called whenever new component created<br>
+        ii. initializing state<br>
+        iii. binding the event handlers<br>
+        iv. <b>do not cause side effects. ex: HTTP request</b> <br>
+        v. super(props) and directly overwrite this.state
+    </p>
+    <p>getDerivedStateFromProps(props,state):<br><br>
+        point-i. when the state of the component depends on changed in props over time.<br>
+        ii. set the state<br>
+        iii. <b>do not cause side effects. ex: HTTP request</b> <br>
+    </p>
+    <p>render():<br><br>
+        point- i. Only required method<br>
+        ii. read props & state and return JSX<br>
+        iii. <b>do not change state or interact with DOM or make ajax calls</b><br>
+        iv. Children component lifecycle methods are also executed<br>
+    </p>
+    <p>componentDidMount()<br><br>
+        point- i. Invoke immediately after a component and all its children components have been rendered to the DOM.<br>
+        ii. you can cause side effects in this. ex: Iterect eith the DOM or perform any ajac calls to load data.
+    </p>
+
+    <h3>2. Updating</h3>
+    <p>execute order : getDerivedStateFromProps->shouldComponentUpdate->render->getSnapshotBeforeUpdate -> componentDidUpdate</p>
+    <p>static getDerivedStateFromProps(props,state) :<br><br>
+        point- i. Method is called every time a component is re-rendered<br>
+        ii. set the state<br>
+        iii. <b>do not cause side effects. ex: HTTP request</b> <br>
+    </p>
+    <p>shouldComponentUpdate(nextProps,nextState):<br><br>
+        point-i. Dictated if the component should re-render or not<br>
+        ii. used for performance optimization<br>
+        iii. <b>do not cause side effects. ex: HTTP requests, calling the setState method</b> <br>
+    </p>
+    <p>render():<br><br>
+        point- i. Only required method<br>
+        ii. read props & state and return JSX<br>
+        iii. <b>do not change state or interact with DOM or make ajax calls</b><br>
+        iv. Children component lifecycle methods are also executed<br>
+    </p>
+    <p>getSnapshotBeforeUpdate(preProps,precState):<br><br>
+        point- i. Called right before the change from the virtual DOM are to be reflected in the DOM.<br>
+        ii. used to capture some information from the DOM ex: maintained the scroll position after the update<br>
+        iii. Method will either return null or return a value. Returned value will be passed as the parameter to the next method.<br>
+    </p>
+    <p>componentDidUpdate(preProps,precState,snapshot):<br><br>
+        point- i. Called after the render is finished in the re-render cycles<br>
+        ii. You can cause side effects ex: ajax calling
+    </p>
+    <h3>3. Unmounting</h3>
+    <p>componentWillUnmount():<br><br>
+    point-i. Methed is invoked immediately before a component is unmounted and destroyed.<br>
+    ii. Can be used in- cancelling any network requests, removing event handlers, cancelling any subscriptions and also invalidating timers.<br>
+    iii. <b>Do not call setState method.</b>
+    </p>
+    <h3>4. Error Handling</h3>
+    <p>static getDerivedStateFromError(error),<br>
+    componentDidCatch(error,info)<br>
+    both method call when ther is an error either during rendering, in a lifecycle method, or in the constructor of any child component.
+    </p>
+</body>
+
+</html>
