@@ -9,6 +9,7 @@ import Parent from './Components/Parent';
 import Condition from './Components/Condition';
 import CouseRender from './Components/CouseRender';
 import Styling from './Components/Styling';
+import FormC from './Components/FormC';
 function App() {
   return (
     <div className="App">
@@ -46,6 +47,9 @@ function App() {
 
       {/* Styling  */}
       <Styling primary={true}/>
+
+      {/* Form Handling */}
+      <FormC/>
     </div>
   );
 }
