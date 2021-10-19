@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Handling</title>
+</head>
+<body>
+    <h1>React Form Data Handling</h1>
+    <p>to handle a data of input of form using react, we have have make input component as Controlled Component</p>
+    <h3>Controlled Component</h3>
+    <p>Exmaple: &lt;input value = {this.state.name} onChange={this.changeName}/> <br>
+        In this example value of input handles by Component and onChange also handle by Component means every input value is controlled by react component then this input field called as <b>Controlled Component</b> 
+    </p>
+    <h3>Example</h3>
+    <pre>
+        class FormC extends Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    name: "",
+                    password: ""
+                }
+                this.changeName = this.changeName.bind(this)
+            }
+            changeName(event){
+                this.setState(prevState=>({
+                    name: event.target.value
+                }))
+            }
+            changePassword = (event)=>{
+                this.setState(prevState=>({
+                    password: event.target.value
+                }))
+            }
+        
+            // handling the form submission
+            validateHandler=(event)=>{
+                if(this.state.name.length>6 && this.state.password.length>=6){
+                    alert(`valid input ${this.state.name} ${this.state.password}`)
+                }else{
+                    alert("invalid")
+                }
+                // to prevent the refresh after the submission
+                event.preventDefault();
+            }
+            render() {
+                return (
+                    &lt;div>
+                        &lt;form onSubmit={this.validateHandler}>
+                            &lt;div>
+                            &lt;label>Name: &lt;/label>
+                            &lt;input type='text' value={this.state.name} onChange={this.changeName}/>&lt;p>&lt;/p>
+                            &lt;/div>
+                            &lt;div>
+                                &lt;label>Password: &lt;/label>
+                                &lt;input type="password" value={this.state.password} onChange={this.changePassword}/>&lt;p>&lt;/p>
+                            &lt;/div>
+                            &lt;button type='submit'>Submit&lt;/button>
+                        &lt;/form>
+                    &lt;/div>
+                )
+            }
+        }
+    </pre>
+</body>
+</html>
