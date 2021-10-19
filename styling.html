@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling React Component</title>
+</head>
+<body>
+    <h1>Styling React Component</h1>
+    <p>basic 4 ways to style react component</p>
+    <p>1. CSS Stylesheets<br>2. CSS Inline Syling<br>3. CSS Modules<br>4. CSS in JS Libaries(Styled Component)</p>
+    <h3>1. CSS Stylesheets</h3>
+    <p>i. create a css stylesheet for that component<br>
+    ii. import this css file into that component<br>
+    iii. and add class or id to tags<br>
+    iv. (optional) pass class name as props to component to add</p>
+    <p><b>note: </b>if want add multiple classes then use combination of template $ to add variables</p>
+    
+    <h3>2. Inline Style</h3>
+    <p>i. In React, the syle attribute accept object as value in which all the syling define<br>
+        ii. first, create a varible and assign all the styling you want<b>(React follow Camelcase name pattern)</b>()<br>
+        iii. and then assign this varible to style attribute
+    </p>
+    <h3>3. CSS Modules</h3>
+    <p>
+        i. create a file with extension .module.css ex: styling.module.css<br>
+        ii. their is different in importing simple css(import './filename.css') and module css(import style from './filename.module.css')
+        iii. then assign a class from module ex: lt;h1 className={style.name}>module text&lt;h2>  
+    </p>
+    <p><b>Important!!: </b>advantage to use CSS module is that can be access without importing into child (local Scope) </p>
+    <h3>Example:</h3>
+    <pre>
+        <b>Component</b>
+        import './stylec.css'
+        import styles from './style.module.css'
+        const inlinestyle = {
+            fontSize: '25px',
+            color: 'red'
+        }
+        function Styling(props) {
+            let primary = props.primary ? "purp":""
+            return (
+                &lt;div>
+                    {/* 1. StyleSheet */}
+                    &lt;h2 className={`${primary} xl`}>Stylesheet&lt;/h2>
+                    {/* 2. Inline */}
+                    &lt;h2 style={inlinestyle}>Inline&lt;/h2>
+                    {/* 3. Css Module */}
+                    &lt;h2 className={styles.warning}>module text&lt;/h2>
+                    &lt;/div>
+            )
+        }
+
+        <b>css file</b>(stylec.css)
+        purp{
+            color: purple;
+        }
+        .xl{
+            font-size: 50px;
+        }
+
+        <b>css module</b>(style.module.css)
+        .warning{
+            color: yellow;
+        }
+</pre>
+</body>
+</html>
