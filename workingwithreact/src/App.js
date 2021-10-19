@@ -7,6 +7,7 @@ import ClickHandler from './Components/ClickHandler';
 import ClassClick from './Components/ClassClick';
 import Parent from './Components/Parent';
 import Condition from './Components/Condition';
+import CouseRender from './Components/CouseRender';
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,9 @@ function App() {
 
       {/* Conditional Rendering - Sign in ex */}
       <Condition/>
+
+      {/* List Rendering */}
+      <CouseRender/>
     </div>
   );
 }
