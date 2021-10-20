@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Refs</title>
+</head>
+<body>
+    <h1>React Refs</h1>
+    <p>Refs is used to get access the DOM node directly is react <br>
+    Refs commonly used is focusing input on render , used to get value of DOM node ...<br><br>
+    <b>Example: </b><br>
+    <pre>
+        class Refs extends Component {
+            constructor(props) {
+                super(props)
+                this.inputRef = React.createRef()
+                this.state = {name: "",email:"",password:"",confirmPass:""
+                }
+            }
+            componentDidMount(){this.inputRef.current.focus()}
+
+            nameHandler = (event)=>{
+                this.setState(prevState=>({name: event.target.value}))
+            }
+            emailHandler =(event)=>{
+                this.setState(prevState=>({email: event.target.value}))
+            }
+            passwordHandler =(event)=>{
+                this.setState(prevState=>({password: event.target.value}))
+            }
+            cpasswordHandler =(event)=>{
+                this.setState(prevState=>({confirmPass: event.target.value}))
+            }
+            submitHandler =(event)=>{
+                alert(`${this.state.name} ${this.state.password}`)
+                event.preventDefault()
+            }
+            render() {
+                return (
+                    &lt;>
+                    &lt;p>&lt;/p>
+                        &lt;form onSubmit={this.submitHandler}>
+                            &lt;label>Full Name&lt;/label>
+                            &lt;input type="text" ref={this.inputRef} on value={this.state.name} onChange={this.nameHandler} required>&lt;/input>
+                            &lt;p>&lt;/p>
+                            &lt;label>Email&lt;/label>
+                            &lt;input type="email" value={this.state.email} onChange={this.emailHandler} required>&lt;/input>
+                            &lt;label>Password&lt;/label>
+                            &lt;input type="password" value={this.state.password} onChange={this.passwordHandler} required>&lt;/input>
+                            &lt;p>&lt;/p>
+                            &lt;label>Confirm Password<&lt;label>
+                            &lt;input type="password" value={this.state.confirmPass} onChange={this.cpasswordHandler} required>&lt;/input>
+                            &lt;p&lt;/p>
+                            &lt;button type="submit">Sign Up&lt;/button>
+                        &lt;/form>
+                    &lt;/>
+                )
+            }
+        }
+    </pre><br><br>
+    <b>Point-</b> Class Component also be used as reference "Refs" and the we call the method of that class into another class<br>
+    example: &lt;ClassB ref={this.compRef}> and then call ClassB method (this.compRef.current.classBMethod())<br>
+    <b>Important!!</b> refs can't be used for Functional Component
+    </p>
+</body>
+</html>

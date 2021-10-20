@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Component - React</title>
+</head>
+<body>
+    <h1> React Pure Component</h1>
+    <p>Pure Component is second way to create Class Component. 
+    <br><br>
+    <b>example</b>
+    <pre>class A extends PureComponent{
+        render(){
+            return &lt;h1>Pure Component&lt;h1>
+        }
+    }
+</pre>
+    <br>
+    <b>Advantage over simple Component -</b> Pure Componet did not re-rendered if there is no difference because Pure Component implements shouldComponentUpdate 
+    method with shallow props and state comparison(preformance boostup)<br><br>
+    <b>Note: </b> although Pure Component is only for Class Component but you can achieve this also in <a href="./components.html">Functional Component</a> using <b>"React memo"</b>
+    
+    <h3>Functional Component: React momo</h3>
+    <p>For get same beheivior as Pure Component in Functional component. Memo Component is a higher order component<br>
+        Achieved by just change "export defualt name" to "export default React.memo(name)"
+    </p>
+    <b>example</b>
+    <pre>function B{
+            return &lt;h1>Pure Component&lt;h1>
+        export default React.memo(B)
+        }
+</pre>
+    <a href="./refs.html"><button>Next React Refs ></button></a>
+    </p>
+</body>
+</html>
