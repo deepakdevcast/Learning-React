@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Fragments</title>
+</head>
+<body>
+    <h1>React Fragments</h1>
+    <p>used to replace the root &lt;div> tag in return</p>
+    <p>you must noticed than if you wanna return the multiple elements then you have to insert all element in div<br>
+    the problem with this approch is this div tag also get rendered in DOM and sometime console gives warning.<br>
+    the best appoach is to replace this div to React.Fragment .</p>
+    <p><b>example:</b>
+        <pre>
+    return (&lt;React.Fragment>
+            &lt;h1>text&/h1>
+            &lt;p>para&lt;/p>
+            &lt;/React.Fragment>)
+        </pre>
+    </p>
+    <p><b>Point-</b> React.Fragment also accept key attribute it means it can be used in List Rendering</p>
+    <b>sortcut for using Fragment is to- replace &lt;React.Fragment> to empty brakets &lt;></b> (one limition of this sortcut is you can't pass key attribute)
+    <p><b>example:</b>
+        <pre>
+    return (&lt;>
+            &lt;h1>text&/h1>
+            &lt;p>para&lt;/p>
+            &lt;/>)
+        </pre>
+    </p>
+</body>
+</html>
