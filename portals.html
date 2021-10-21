@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Portals</title>
+</head>
+<body>
+    <h1>React Portals</h1>
+    <p> you noticed that everything you do always be in the root(app) tag to break through this use react portals</p>
+    <h3>Step-by-Step</h3>
+    <p>1. add new div tag in index.html file with id<br>
+    2. create a component and do what you want before returning the JSX use ReactDOM.createPortal(&lt;JSX>,document.getElementById("ids"))<br>
+    3. after this add this component in App(main) component to render
+    <h3>Example: </h3>
+    <pre>
+        Portal component
+
+        import React from 'react'
+        import ReactDOM from 'react-dom'
+        function PortalComp() {
+            return ReactDOM.createPortal(
+                &lt;>
+                    &lt;h2>React Portal&lt;/h2>
+                &lt;/>,document.getElementById('react-portal')
+            )
+        }
+        export default PortalComp
+
+        parent Component
+
+        fuction App(){
+            return (
+                &lt;PortalComp/>
+            )
+        }
+    </pre>
+    <b>Important!!</b> the Portal component is a child of App component although it's not a child of root in DOM means you can pass anything to parent component from portals<br>
+    Best place is to use Portals is when using Modal Component or hovering something above and do changes in back
+</p>
+</body>
+</html>
