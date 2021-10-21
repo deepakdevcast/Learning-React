@@ -12,6 +12,8 @@ import Styling from './Components/Styling';
 import FormC from './Components/FormC';
 import Refs from './Components/Refs';
 import PortalComp from './Components/PortalComp';
+import ErrorBoundary from './Components/ErrorBoundary';
+import ErrorCheck from './Components/ErrorCheck';
 function App() {
   return (
     <div className="App">
@@ -58,6 +60,17 @@ function App() {
 
       {/* React Portals */}
       <PortalComp/>
+
+      {/* Error Checking: it will throw error if name="joker" */}
+      <ErrorBoundary>
+        <ErrorCheck name="superman"/>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <ErrorCheck name="spiderman"/>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <ErrorCheck name="joker"/>
+      </ErrorBoundary>
     </div>
   );
 }
