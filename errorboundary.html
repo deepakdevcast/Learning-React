@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React:Error Boundary</title>
+</head>
+<body>
+    <h1>Error Boundary</h1>
+    <p>A class component that implements either one or both of the lifecycle methods getDerivedStateFromError or componentDidCatch be become an <b>error Boundary</b>.</p>
+    <p>the static method getDerivedStateFromError method used to render a fallback UI after an error is thrown and the componentDidCatch use to log the error information.
+    In the devloping mode, React always show what is error although In production mode you want get error if you do Error Boundary</p>
+    <h3>Example: </h3>
+    <pre>
+
+        function ErrorCheck(props) {
+            if(props.name==="joker"){
+                throw new Error("Error!!")
+            }
+            return (
+                &lt;div>
+                    {props.name}
+                &lt;/div>
+            )
+        }
+
+        Error Boundary class to fallback error
+
+        class ErrorBoundary extends Component {
+            constructor(props) {
+                super(props)
+            
+                this.state = {
+                    hasError: false
+                }
+            }
+            
+            static getDerivedStateFromError(){
+                return {
+                    hasError: true
+                }
+            }
+            render() {
+                if(this.state.hasError){
+                    return &lt;h2 style={{color:"red"}}>Not rendered &lt;/h2>
+                }
+                return (
+                    &lt;>
+                        {this.props.children}
+                    &lt;/>
+                )
+            }
+        }
+    </pre>
+</body>
+</html>
