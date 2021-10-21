@@ -11,6 +11,7 @@ import CouseRender from './Components/CouseRender';
 import Styling from './Components/Styling';
 import FormC from './Components/FormC';
 import Refs from './Components/Refs';
+import PortalComp from './Components/PortalComp';
 function App() {
   return (
     <div className="App">
@@ -54,6 +55,9 @@ function App() {
 
       {/* Refs */}
       <Refs/>
+
+      {/* React Portals */}
+      <PortalComp/>
     </div>
   );
 }
