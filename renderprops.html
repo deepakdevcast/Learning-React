@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React: Render Props</title>
+</head>
+<body>
+    <h1>Render Props</h1>
+    <p>The term "render prop" refers to a technique for <b>sharing code</b> between React components using a <b>props whose value in a function</b>.</p>
+    <p>Step-by-Step<br>
+    1. create a component where we code the common fuctionallity between components<br>
+    2. pass the arrow function as props to this component<br>
+    3. Arrow fuction accept the common fuctionallity from this component and pass though to components(need common fuctionallity).<br>
+    4. the new component only return the props with fuctionallity as arguments.
+</p>
+<p><b>Example: </b><br>
+    <pre>
+        App.js
+            function App(){
+                return (&lt;>
+                &lt;CounterProps render={(count,IncrementCount)=>&lt;ClickCounterProps count={count} IncrementCount={IncrementCount}>&lt;/ClickCounterProps>}/>
+                &lt;CounterProps render={(count,IncrementCount)=>&lt;HoverCounterProps count={count} IncrementCount={IncrementCount}>&lt;/HoverCounterProps>}/>
+                &lt;/>)
+            }
+            
+            CounterProps.js
+            class CounterProp extends Component {
+                constructor(props) {
+                    super(props)
+            
+                    this.state = {
+                        count: 0
+                    }
+                }
+                IncrementCount = () => {
+                    this.setState(prevState => ({
+                        count: prevState.count + 1
+                    }
+                    ))
+                }
+                render() {
+                    return (
+                        &lt;div>
+                            {this.props.render(this.state.count,this.IncrementCount)}
+                        &lt;/div>
+                    )
+                }
+            }
+
+            ClickCounterProps.js
+            class ClickCounterProp extends Component {
+                render() {
+                    return (
+                        &lt;button onClick={this.props.IncrementCount}>Click {this.props.count} times-props&lt;/button>
+                    )
+                }
+            }
+    </pre>
+</p>
+</body>
+</html>
