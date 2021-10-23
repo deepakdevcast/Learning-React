@@ -1,5 +1,5 @@
 import './App.css';
-import {Welcome} from './Components/Welcome';
+import { Welcome } from './Components/Welcome';
 import Hello from './Components/Hello';
 import Message from './Components/Message';
 import Counter from './Components/Counter';
@@ -16,67 +16,81 @@ import ErrorBoundary from './Components/ErrorBoundary';
 import ErrorCheck from './Components/ErrorCheck';
 import ClickCounter from './Components/ClickCounter';
 import HoverCounter from './Components/HoverCounter';
+import CounterProp from './Components/CounterProp';
+import ClickCounterProp from './Components/ClickCounterProp';
+import HoverCounterProp from './Components/HoverCounterProp';
 function App() {
   return (
     <div className="App">
-      
+
       {/* Welocome-function Components with props.name(name=Readers) 
       and props.children(p tag)
       */}
       <Welcome name="Readers">
         <p>Hello everyone I am a children make sure to use me.</p>
       </Welcome>
-      
+
       {/*Hello-Class Component with this.props.name */}
-      <Hello name="Readers"/>
+      <Hello name="Readers" />
 
       {/* Message-Class Component with state to change text using button */}
-      <Message/>
-      
+      <Message />
+
       {/* Counter-class Component more with setState */}
-      <Counter/>
+      <Counter />
 
       {/* functional component Event handler */}
-      <ClickHandler/>
+      <ClickHandler />
 
       {/* Class componenet Event handler */}
-      <ClassClick/>
+      <ClassClick />
 
       {/* child to parent - method as props */}
-      <Parent/>
+      <Parent />
 
       {/* Conditional Rendering - Sign in ex */}
-      <Condition/>
+      <Condition />
 
       {/* List Rendering */}
-      <CouseRender/>
+      <CouseRender />
 
       {/* Styling  */}
-      <Styling primary={true}/>
+      <Styling primary={true} />
 
       {/* Form Handling */}
-      <FormC/>
+      <FormC />
 
       {/* Refs */}
-      <Refs/>
+      <Refs />
 
       {/* React Portals */}
-      <PortalComp/>
+      <PortalComp />
 
 
       {/* HOC: Higher Order Component */}
-      <ClickCounter/>
-      <HoverCounter/>
-      
+      <ClickCounter />
+      <HoverCounter />
+
+      {/* Render props */}
+      <CounterProp
+        render={(count, IncrementCount) =>
+          <ClickCounterProp count={count} IncrementCount={IncrementCount}></ClickCounterProp>
+        } />
+      <CounterProp
+        render={(count, IncrementCount) => 
+          <HoverCounterProp count={count} IncrementCount={IncrementCount}></HoverCounterProp>
+        } />
+
+
       {/* Error Checking: it will throw error if name="joker" */}
       <ErrorBoundary>
-        <ErrorCheck name="superman"/>
+        <ErrorCheck name="superman" />
       </ErrorBoundary>
       <ErrorBoundary>
-        <ErrorCheck name="spiderman"/>
+        <ErrorCheck name="spiderman" />
       </ErrorBoundary>
       <ErrorBoundary>
-        <ErrorCheck name="joker"/>
+        <ErrorCheck name="joker" />
       </ErrorBoundary>
 
     </div>
