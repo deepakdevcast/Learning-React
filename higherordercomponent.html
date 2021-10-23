@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React:Higher Order Component</title>
+</head>
+<body>
+    <h1>React:Higher Order Component (HOC)</h1>
+    <p><b>need:</b>To getting directly access something(method or props..) from Component to Component which doesn't connect directly or To sharing common fuctionality between Components<br>
+    you can solve the above need by using Component tree means create one parent Component with both component as child with what you want to access. it's might work in some cases but not efficent solution
+    </p>
+    <p>HOC: it's a pattern where a function takes a component as argument and return a new component ex: const NewComp = higherOrderComponent(OriginalComponent)</p>
+    <p>Step-by-Step:<br>
+        1. Create a new file with Arrow function which accepts class component as argument<br>
+        2. and defined a new class component which add new fuctionality and return a OriginalComponent with fuctionality as props<br>
+        3. the arrow function return this new class component<br>
+        4. at the end, export the arrow fuction<br>
+        5. In the OriginalComponent change the export by calling the fuction with passing OriginalComponent<br>
+        <pre>
+            <h3>Example</h3>
+            <b>HoverCounter.js</b>
+            import Counter from './Counterhoc'
+            class HoverCounter extends Component {
+                render() {
+                    return (
+                        &lt;h1 onMouseEnter={this.props.IncrementCount}>Hover {this.props.count} times&lt;/h1>
+                    )
+                }
+            }
+            export default Counter(HoverCounter)
+            
+            <b>ClickCounter.js</b>
+            import counterhoc from './Counterhoc'
+            class ClickCounter extends Component {
+                render() {
+                    return (
+                        &lt;button onClick={this.props.IncrementCount}>Click {this.props.count} times&lt;/button>
+                    )
+                }
+            }
+            export default counterhoc(ClickCounter)
+
+            <b>Counterhoc.js(HOC of ClickCounter and HoverCounter)</b>
+            const counterhoc = (WrappedComponent)=>{
+                class Counterhoc extends Component{
+                    constructor(props) {
+                        super(props)
+                    
+                        this.state = {
+                            clickCount: 0
+                        }
+                    }
+                    
+                    IncrementCount=()=>{
+                        this.setState(prevState=>({
+                            clickCount:prevState.clickCount+1
+                        }))
+                    }
+                    render(){
+                        return &lt;WrappedComponent count={this.state.clickCount} IncrementCount={this.IncrementCount}/>
+                    }
+                }
+                return Counterhoc
+            }
+            export default counterhoc
+        </pre>
+    </p>
+</body>
+</html>
