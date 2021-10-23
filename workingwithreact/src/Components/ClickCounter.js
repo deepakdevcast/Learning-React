@@ -10,4 +10,4 @@ class ClickCounter extends Component {
     }
 }
 
-export default counterhoc(ClickCounter)
+export default counterhoc(ClickCounter,2)

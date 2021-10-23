@@ -66,6 +66,33 @@
             }
             export default counterhoc
         </pre>
+        <br>
+        <b>Important!!</b>if pass the props to Original Component from different component and used in OriginalComponent it will not work because props is replaced by the <b>HOC</b>.
+        <br>to overcome this, pass this other props using {... this.props} in HOC<br>
+        <b>example:</b>
+        <pre>
+            App.js
+            function App(){
+                return &lt;ClickCounter name="Readers"/>
+            }
+            
+            Counterhoc.js
+            coust counterhoc = (WrappedComponent)=>{
+                class Counterhoc extends Component{
+                    ...
+                    render(){
+                        return &lt;WrappedComponent 
+                        count={this.state.clickCount} 
+                        IncrementCount={this.IncrementCount}
+                        {...this.props} <b>//this line</b>
+                        />
+                    }
+                }
+            }
+        </pre>
+        <br>Similar to HOC we can use Reander props
+        <br>
+        <a href="./renderprops.html"><button>next Render Props</button></a>
     </p>
 </body>
 </html>
