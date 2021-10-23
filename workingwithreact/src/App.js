@@ -14,6 +14,8 @@ import Refs from './Components/Refs';
 import PortalComp from './Components/PortalComp';
 import ErrorBoundary from './Components/ErrorBoundary';
 import ErrorCheck from './Components/ErrorCheck';
+import ClickCounter from './Components/ClickCounter';
+import HoverCounter from './Components/HoverCounter';
 function App() {
   return (
     <div className="App">
@@ -61,6 +63,11 @@ function App() {
       {/* React Portals */}
       <PortalComp/>
 
+
+      {/* HOC: Higher Order Component */}
+      <ClickCounter/>
+      <HoverCounter/>
+      
       {/* Error Checking: it will throw error if name="joker" */}
       <ErrorBoundary>
         <ErrorCheck name="superman"/>
@@ -71,6 +78,7 @@ function App() {
       <ErrorBoundary>
         <ErrorCheck name="joker"/>
       </ErrorBoundary>
+
     </div>
   );
 }
