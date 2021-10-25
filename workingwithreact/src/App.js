@@ -72,14 +72,14 @@ function App() {
       <HoverCounter />
 
       {/* Render props */}
-      <CounterProp
-        render={(count, IncrementCount) =>
+      <CounterProp>
+        {(count, IncrementCount) =>
           <ClickCounterProp count={count} IncrementCount={IncrementCount}></ClickCounterProp>
-        } />
-      <CounterProp
-        render={(count, IncrementCount) => 
+        }</CounterProp>
+      <CounterProp>
+        {(count, IncrementCount) => 
           <HoverCounterProp count={count} IncrementCount={IncrementCount}></HoverCounterProp>
-        } />
+        }</CounterProp>
 
 
       {/* Error Checking: it will throw error if name="joker" */}

@@ -20,8 +20,10 @@
         App.js
             function App(){
                 return (&lt;>
-                &lt;CounterProps render={(count,IncrementCount)=>&lt;ClickCounterProps count={count} IncrementCount={IncrementCount}>&lt;/ClickCounterProps>}/>
-                &lt;CounterProps render={(count,IncrementCount)=>&lt;HoverCounterProps count={count} IncrementCount={IncrementCount}>&lt;/HoverCounterProps>}/>
+                &lt;CounterProps>
+                {(count,IncrementCount)=>&lt;ClickCounterProps count={count} IncrementCount={IncrementCount}}&lt;/ClickCounterProps>}/>
+                &lt;CounterProps>
+                {(count,IncrementCount)=>&lt;HoverCounterProps count={count} IncrementCount={IncrementCount}}&lt;/HoverCounterProps>}/>
                 &lt;/>)
             }
             
@@ -43,7 +45,7 @@
                 render() {
                     return (
                         &lt;div>
-                            {this.props.render(this.state.count,this.IncrementCount)}
+                            {this.props.children(this.state.count,this.IncrementCount)}
                         &lt;/div>
                     )
                 }

@@ -17,7 +17,7 @@ class CounterProp extends Component {
     render() {
         return (
             <div>
-                {this.props.render(this.state.count,this.IncrementCount)}
+                {this.props.children(this.state.count,this.IncrementCount)}
             </div>
         )
     }
